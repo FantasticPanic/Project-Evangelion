@@ -1,2 +1,7 @@
 Library/
 obj/
+Logs/AssetImportWorker0.log
+.vs/Project Evangelion/v15/Server/sqlite3/storage.ide-wal
+.vs/Project Evangelion/v15/Server/sqlite3/storage.ide-shm
+.vs/Project Evangelion/v15/Server/sqlite3/storage.ide
+.vs/Project Evangelion/v15/Server/sqlite3/db.lock
