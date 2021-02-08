@@ -59,6 +59,8 @@
     <Compile Include="Assets\Resources\Scripts\PlayerSpawner.cs" />
     <Compile Include="Assets\Resources\Scripts\IActorTemplate.cs" />
     <Compile Include="Assets\Resources\Scripts\PlayerBullet.cs" />
+    <Compile Include="Assets\Resources\Scripts\EnemySpawner.cs" />
+    <Compile Include="Assets\Resources\Scripts\EnemyWave.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

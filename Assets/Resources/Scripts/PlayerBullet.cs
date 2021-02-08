@@ -26,7 +26,7 @@ public class PlayerBullet : MonoBehaviour,  IActorTemplate
     // Update is called once per frame
     void Update()
     {
-
+        transform.position = new Vector3(travelSpeed, 0, 0) * Time.deltaTime;
     }
 
 
@@ -53,4 +53,27 @@ public class PlayerBullet : MonoBehaviour,  IActorTemplate
         health -= incomingDamage;
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == ("Enemy"))
+        {
+            if (other.GetComponent<IActorTemplate>() != null)
+            {
+                if (health >= 1)
+                {
+                    health -= other.GetComponent<IActorTemplate>().SendDamage();
+                }
+                if (health <= 0)
+                {
+                    Die();
+                }
+            }
+                
+        }
+    }
+
+    void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
 }
