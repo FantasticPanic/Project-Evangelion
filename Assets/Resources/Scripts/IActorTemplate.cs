@@ -4,8 +4,8 @@ using UnityEngine;
 
 public interface IActorTemplate
 {
-    int SendDamager();
-    void TakeDamage(int incomingDamager);
+    int SendDamage();
+    void TakeDamage(int incomingDamage);
     void Die();
     void ActorStats(SOActorModel actorModel);
 }

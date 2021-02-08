@@ -26,8 +26,8 @@ public class PlayerSpawner : MonoBehaviour
         playerShip.GetComponent<Player>().ActorStats(actorModel);
 
         //set up player
-        playerShip.transform.rotation = Quaternion.Euler(0, 180, 0);
-        playerShip.transform.localScale = new Vector3(60, 60, 60);
+        playerShip.transform.rotation = Quaternion.Euler(0, 90, 0);
+        playerShip.transform.localScale = new Vector3(3, 3, 3);
         playerShip.name = "Player";
         playerShip.transform.SetParent(this.transform);
         playerShip.transform.position = Vector3.zero;

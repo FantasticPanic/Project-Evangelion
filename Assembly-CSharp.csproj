@@ -58,6 +58,7 @@
     <Compile Include="Assets\Resources\Scripts\SOActorModel.cs" />
     <Compile Include="Assets\Resources\Scripts\PlayerSpawner.cs" />
     <Compile Include="Assets\Resources\Scripts\IActorTemplate.cs" />
+    <Compile Include="Assets\Resources\Scripts\PlayerBullet.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

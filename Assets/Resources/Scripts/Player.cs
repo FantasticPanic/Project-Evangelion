@@ -53,17 +53,89 @@ public class Player : MonoBehaviour, IActorTemplate
 
     public void Die()
     {
-        throw new System.NotImplementedException();
+        Destroy(this.gameObject);
     }
 
-    public int SendDamager()
+    public int SendDamage()
     {
-        throw new System.NotImplementedException();
+        return hitPower;
     }
 
-    public void TakeDamage(int incomingDamager)
+    public void TakeDamage(int incomingDamage)
     {
-        throw new System.NotImplementedException();
+        health -= incomingDamage;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Enemy")
+        {
+            if (health >= 1)
+            {
+                //shield that the player can buy
+                //if player has a shield, destroy it
+                if (transform.Find("energy +1(Clone)"))
+                {
+                    Destroy(transform.Find("energy +1(Clone)").gameObject);
+                    health -= other.GetComponent<IActorTemplate>().SendDamage();
+                }
+                else
+                {
+                    health -= 1;
+                }
+            }
+            if (health <= 0)
+            {
+                Die();
+
+            }
+        }
+    }
+
+    void Movement()
+    {
+        if (Input.GetAxisRaw("Horizontal") > 0)
+        {
+            if (transform.localPosition.x < width + width / 0.9f)
+            {
+                transform.localPosition += new Vector3(Input.GetAxisRaw("Horizontal")
+                    * Time.deltaTime * travelSpeed, 0, 0);
+            }
+        }
+        if (Input.GetAxisRaw("Horizontal") < 0)
+        {
+            if (transform.localPosition.x > width + width / 6)
+            {
+                transform.localPosition += new Vector3(Input.GetAxisRaw("Horizontal")
+                    * Time.deltaTime * travelSpeed, 0, 0);
+            }
+        }
+        if (Input.GetAxis("Vertical") < 0)
+        {
+            if (transform.localPosition.y > -height / 3f)
+            {
+                transform.localPosition += new Vector3(0, Input.GetAxisRaw("Vertical") * Time.deltaTime * travelSpeed, 0);
+            }
+        }
+
+        if (Input.GetAxis("Vertical") > 0)
+        {
+            if (transform.localPosition.y < height / 2.5f)
+            {
+                transform.localPosition += new Vector3(0, Input.GetAxisRaw("Vertical") * Time.deltaTime * travelSpeed, 0);
+            }
+        }
+    }
+
+    void Attack()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            GameObject bullet = GameObject.Instantiate(fire,transform.position, Quaternion.Euler
+                (new Vector3(0, 0, 0))) as GameObject;
+            bullet.transform.SetParent(_Player.transform);
+            bullet.transform.localScale = new Vector3(7, 7, 7);
+        }
     }
 
 }
