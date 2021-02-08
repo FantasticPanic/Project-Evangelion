@@ -19,7 +19,7 @@ public class EnemyWave : MonoBehaviour, IActorTemplate
 
     void Update()
     {
-       // Attack();
+         Attack();
     }
 
 
@@ -37,11 +37,35 @@ public class EnemyWave : MonoBehaviour, IActorTemplate
 
     public int SendDamage()
     {
-        return fireSpeed;
+        return hitPower;
     }
 
     public void TakeDamage(int incomingDamage)
     {
         health -= incomingDamage;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            if (health >= 1)
+            {
+                health -= other.GetComponent<IActorTemplate>().SendDamage();
+            }
+            if (health <= 0)
+            {
+                Die();
+            }
+        }
+    }
+
+    void Attack()
+    {
+        time += Time.deltaTime;
+        sineVer.y = Mathf.Sin(time * verticalSpeed) * verticalAmplitude;
+        transform.position = new Vector3(transform.position.x + travelSpeed * Time.deltaTime,
+            transform.position.y + sineVer.y,
+            transform.position.z);
     }
 }

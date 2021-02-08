@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8be4ee304253da44984e876228683035, type: 3}
-  m_Name: Basic Enemy
+  m_Name: Bullet
   m_EditorClassIdentifier: 
-  actorName: enemy_wave
-  attackType: 0
-  description: enemy in groups
+  actorName: Bullet
+  attackType: 3
+  description: 
   health: 1
-  speed: -100
+  speed: 500
   hitPower: 1
-  actor: {fileID: 6236153275274880518, guid: 996f3c9b6aaaa7f4eb9dfe72602386ef, type: 3}
+  actor: {fileID: 2635223749182461859, guid: 55947d5617bde544d8abe027b5e5edb1, type: 3}
   actorBullets: {fileID: 0}

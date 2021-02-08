@@ -37,8 +37,8 @@ public class Player : MonoBehaviour, IActorTemplate
     // Update is called once per frame
     void Update()
     {
-        //Movement();
-       // Attack();
+        Movement();
+       Attack();
 
     }
 
@@ -134,7 +134,8 @@ public class Player : MonoBehaviour, IActorTemplate
             GameObject bullet = GameObject.Instantiate(fire,transform.position, Quaternion.Euler
                 (new Vector3(0, 0, 0))) as GameObject;
             bullet.transform.SetParent(_Player.transform);
-            bullet.transform.localScale = new Vector3(7, 7, 7);
+            bullet.transform.localScale = new Vector3(20, 20, 20);
+            Debug.Log("SHOOT");
         }
     }
 

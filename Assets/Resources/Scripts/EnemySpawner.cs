@@ -26,6 +26,7 @@ public class EnemySpawner : MonoBehaviour
             GameObject enemyUnit = CreateEnemy();
             enemyUnit.gameObject.transform.SetParent(this.transform);
             enemyUnit.transform.position = transform.position;
+            enemyUnit.transform.localScale = new Vector3(10, 10, 10);
             yield return new WaitForSeconds(spawnRate);
         }
         yield return null;
@@ -36,6 +37,7 @@ public class EnemySpawner : MonoBehaviour
         GameObject enemy = GameObject.Instantiate(actorModel.actor) as GameObject;
         enemy.GetComponent<IActorTemplate>().ActorStats(actorModel);
         enemy.name = actorModel.actorName.ToString();
+        
         return enemy;
     }
 }

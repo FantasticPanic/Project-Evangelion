@@ -26,7 +26,7 @@ public class PlayerBullet : MonoBehaviour,  IActorTemplate
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(travelSpeed, 0, 0) * Time.deltaTime;
+        transform.position += new Vector3(travelSpeed, 0, 0) * Time.deltaTime;
     }
 
 
