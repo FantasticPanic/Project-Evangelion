@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyWave : MonoBehaviour, IActorTemplate
 {
+
     int health;
     int travelSpeed;
     int fireSpeed;

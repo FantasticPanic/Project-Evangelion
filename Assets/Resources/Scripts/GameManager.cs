@@ -4,6 +4,18 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+
+    static GameManager instance;
+    public static GameManager Instance
+    {
+        get { return instance; }
+    }
+
+    void Awake()
+    {
+        CheckGameManagerIsInTheScene();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,5 +48,18 @@ public class GameManager : MonoBehaviour
         GameObject dirLight = GameObject.Find("Directional Light");
         dirLight.transform.eulerAngles = new Vector3(50, -30, 0);
         dirLight.GetComponent<Light>().color = new Color32(152, 204, 255, 255);
+    }
+
+    void CheckGameManagerIsInTheScene()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+        DontDestroyOnLoad(this);
     }
 }
