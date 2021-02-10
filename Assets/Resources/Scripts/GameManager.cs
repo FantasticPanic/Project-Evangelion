@@ -4,7 +4,16 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static int currentScene = 0;
+    public static int gameLevelScene = 3;
+    public static int playerLives = 3;
 
+    bool died = false;
+    public bool Died
+    {
+        get { return died; }
+        set { died = value; }
+    }
     static GameManager instance;
     public static GameManager Instance
     {
@@ -14,13 +23,15 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         CheckGameManagerIsInTheScene();
+        currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
+        LightsandCameraSetup(currentScene);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        CameraSetup();
-        LightSetup();
+       // CameraSetup();
+       // LightSetup();
     }
 
     // Update is called once per frame
@@ -61,5 +72,35 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);
         }
         DontDestroyOnLoad(this);
+    }
+
+    void LightsandCameraSetup (int sceneNumber)
+    {
+        switch (sceneNumber)
+        {
+            //testLevel, Level1, Level2, Level3
+            case 3: case 4: case 5: case 6:
+                {
+                    LightSetup();
+                    CameraSetup();
+                    break;
+                }
+        }
+    }
+
+    public void LifeLost()
+    {
+        // lose life
+        if (playerLives >= 1)
+        {
+            playerLives--;
+            Debug.Log("Lives left: " + playerLives);
+            GetComponent<ScenesManager>().ResetScene();
+        }
+        else
+        {
+            playerLives = 3;
+            GetComponent<ScenesManager>().GameOver();
+        }
     }
 }
