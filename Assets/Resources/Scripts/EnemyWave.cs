@@ -9,6 +9,7 @@ public class EnemyWave : MonoBehaviour, IActorTemplate
     int travelSpeed;
     int fireSpeed;
     int hitPower;
+    int score;
 
     //wave enemy
     [SerializeField]
@@ -23,17 +24,19 @@ public class EnemyWave : MonoBehaviour, IActorTemplate
          Attack();
     }
 
-
+    //set actor stats
     public void ActorStats(SOActorModel actorModel)
     {
         health = actorModel.health;
         travelSpeed = actorModel.speed;
         hitPower = actorModel.hitPower;
+        score = actorModel.score;
     }
 
     public void Die()
     {
         Destroy(this.gameObject);
+
     }
 
     public int SendDamage()
@@ -57,10 +60,12 @@ public class EnemyWave : MonoBehaviour, IActorTemplate
             if (health <= 0)
             {
                 Die();
+                GameManager.Instance.GetComponent<ScoreManager>().SetScore(score);
             }
         }
     }
 
+    //movement pattern
     void Attack()
     {
         time += Time.deltaTime;

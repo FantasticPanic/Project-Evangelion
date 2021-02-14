@@ -62,6 +62,7 @@
     <Compile Include="Assets\Resources\Scripts\PlayerSpawner.cs" />
     <Compile Include="Assets\Resources\Scripts\PlayerBullet.cs" />
     <Compile Include="Assets\Resources\Scripts\IActorTemplate.cs" />
+    <Compile Include="Assets\Resources\Scripts\ScoreManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
