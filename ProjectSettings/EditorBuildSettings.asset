@@ -27,6 +27,6 @@ EditorBuildSettings:
     path: Assets/Scenes/testLevel.unity
     guid: c2fe037d407c22049b81bd91c68c6ec6
   - enabled: 1
-    path: Assets/Scenes/shop.unity
+    path: Assets/Scenes/shop_old.unity
     guid: 4712958853b49444f8f82d6945d40a5d
   m_configObjects: {}

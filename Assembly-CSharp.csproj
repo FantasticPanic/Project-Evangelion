@@ -56,13 +56,17 @@
     <Compile Include="Assets\Resources\Scripts\EnemySpawner.cs" />
     <Compile Include="Assets\Resources\Scripts\EnemyWave.cs" />
     <Compile Include="Assets\Resources\Scripts\Player.cs" />
+    <Compile Include="Assets\Resources\Scripts\ScoreManager.cs" />
     <Compile Include="Assets\Resources\Scripts\ScenesManager.cs" />
     <Compile Include="Assets\Resources\Scripts\GameManager.cs" />
     <Compile Include="Assets\Resources\Scripts\SOActorModel.cs" />
     <Compile Include="Assets\Resources\Scripts\PlayerSpawner.cs" />
     <Compile Include="Assets\Resources\Scripts\PlayerBullet.cs" />
     <Compile Include="Assets\Resources\Scripts\IActorTemplate.cs" />
-    <Compile Include="Assets\Resources\Scripts\ScoreManager.cs" />
+    <Compile Include="Assets\Resources\Scripts\SOShopSelection.cs" />
+    <Compile Include="Assets\Resources\Scripts\BasicEnemyRotate.cs" />
+    <Compile Include="Assets\Resources\Scripts\PlayerShipBuild.cs" />
+    <Compile Include="Assets\Resources\Scripts\ShopPiece.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
