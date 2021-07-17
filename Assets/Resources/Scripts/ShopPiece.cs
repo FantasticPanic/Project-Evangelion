@@ -21,7 +21,7 @@ public class ShopPiece : MonoBehaviour
 		//selection value
 		if(transform.Find("itemText"))
 		{
-			GetComponentInChildren<TextMesh>().text = shopSelection.cost;
+			GetComponentInChildren<TextMesh>().text = shopSelection.cost.ToString();
 		}
 	}
 }

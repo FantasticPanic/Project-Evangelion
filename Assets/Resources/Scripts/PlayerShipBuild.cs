@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class PlayerShipBuild : MonoBehaviour 
 {
@@ -7,14 +8,48 @@ public class PlayerShipBuild : MonoBehaviour
 	GameObject target;
  	GameObject tmpSelection;
 	GameObject textBoxPanel;
-	
-	void Start()
+
+    [SerializeField]
+    GameObject[] visualWeapons;
+    [SerializeField]
+    SOActorModel defaultPlayerShip;
+    GameObject playerShip;
+    GameObject buyButton;
+    GameObject bankObj;             //assign bank variable
+    int bank = 600;
+    bool purchaseMade = false;       //boolean variable for purchasing
+
+    void Start()
 	{
 		textBoxPanel = GameObject.Find("textBoxPanel");
 		TurnOffSelectionHighlights();
+        purchaseMade = false;                         
+        bankObj = GameObject.Find("bank");
+        bankObj.GetComponentInChildren<TextMesh>().text = bank.ToString();
+        buyButton = textBoxPanel.transform.Find("BUY ?").gameObject;
+
+        TurnOffPlayerShipVisuals();
+        PreparePlayerShipForUpgrade();
 	}
-	
-	GameObject ReturnClickedObject (out RaycastHit hit)
+
+    //reset visual of player's ship
+    private void PreparePlayerShipForUpgrade()
+    {
+        playerShip = GameObject.Instantiate(Resources.Load("Prefabs/Player/Player_Ship")) as GameObject;
+        playerShip.GetComponent<Player>().enabled = false;
+        playerShip.transform.position = new Vector3(0, 10000, 0);
+        playerShip.GetComponent<IActorTemplate>().ActorStats(defaultPlayerShip);
+    }
+    //creates player's ship when it has all upgrades applied
+    private void TurnOffPlayerShipVisuals()
+    {
+        for (int i = 0; i < visualWeapons.Length; i++)
+        {
+            visualWeapons[i].gameObject.SetActive(false);
+        }
+    }
+
+    GameObject ReturnClickedObject (out RaycastHit hit)
 	{
 		GameObject target = null;
 		Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
@@ -58,13 +93,71 @@ public class PlayerShipBuild : MonoBehaviour
 						TurnOffSelectionHighlights();
 						Select();
 						UpdateDescriptionBox();
+
+                    //if not already sold
+                    if (target.transform.Find("itemText").GetComponent<TextMesh>().text != "SOLD")
+                    {
+                        //can afford
+                        Affordable();
+
+                        //can not afford
+                        LackofCredits();
+                    }
+                    else if (target.transform.Find("itemText").GetComponent<TextMesh>().text == "SOLD")
+                    {
+                        SoldOut();
+                    }
 						
 				 }
+                else if (target.name == "BUY?")
+                {
+                    BuyItem();
+
+                    for (int i = 0; i < visualWeapons.Length; i++)
+                    {
+                        if (visualWeapons[i].name == tmpSelection.transform.parent.gameObject.GetComponent<ShopPiece>().ShopSelection.name)
+                        {
+                            visualWeapons[i].SetActive(true);
+                        }
+                    }
+                }
 			}
 		}
+
  	}
 
-	void Update()
+    private void BuyItem()
+    {
+        Debug.Log("PURCHASED");
+        purchaseMade = true;
+        buyButton.SetActive(false);
+        tmpSelection.SetActive(false);
+    }
+
+    private void SoldOut()
+    {
+        Debug.Log("SOLD OUT");
+    }
+
+    private void LackofCredits()
+    {
+        if (bank < target.transform.GetComponent<ShopPiece>().ShopSelection.cost)
+        {
+            Debug.Log("CAN'T BUY");
+           // buyButton.SetActive(false);
+        }
+    }
+
+    private void Affordable()
+    {
+        if (bank >= target.transform.GetComponent<ShopPiece>().ShopSelection.cost)
+        {
+            Debug.Log("CAN BUY");
+            buyButton.SetActive(true);
+        }
+    }
+
+    void Update()
 	{
 		AttemptSelection();
 	}
