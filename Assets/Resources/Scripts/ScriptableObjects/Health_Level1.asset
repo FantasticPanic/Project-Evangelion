@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Health_Level1
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 4b9e50f07aaf3ca41a8cccdc48398023, type: 3}
-  iconName: energy +1
+  iconName: Armor Piece
   description: Gain health by 1
   cost: 200

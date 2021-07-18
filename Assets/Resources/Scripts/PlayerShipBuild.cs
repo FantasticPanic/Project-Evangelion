@@ -130,8 +130,9 @@ public class PlayerShipBuild : MonoBehaviour
 
         for (int i = 0; i < visualWeapons.Length; i++)
         {
-            if (visualWeapons[i].name == tmpSelection.transform.parent.gameObject.GetComponent<ShopPiece>().ShopSelection.name)
+            if (visualWeapons[i].name == tmpSelection.transform.parent.gameObject.GetComponent<ShopPiece>().ShopSelection.iconName)
             {
+                //gameobject name has to be the same as iconName 
                 visualWeapons[i].SetActive(true);
             }
         }
