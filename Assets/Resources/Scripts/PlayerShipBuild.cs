@@ -109,22 +109,17 @@ public class PlayerShipBuild : MonoBehaviour
                     }
 						
 				 }
-                else if (target.name == "BUY?")
+                else if (target.name == "BUY ?")
                 {
                     BuyItem();
 
-                    for (int i = 0; i < visualWeapons.Length; i++)
-                    {
-                        if (visualWeapons[i].name == tmpSelection.transform.parent.gameObject.GetComponent<ShopPiece>().ShopSelection.name)
-                        {
-                            visualWeapons[i].SetActive(true);
-                        }
-                    }
                 }
 			}
 		}
 
  	}
+
+ 
 
     private void BuyItem()
     {
@@ -132,6 +127,26 @@ public class PlayerShipBuild : MonoBehaviour
         purchaseMade = true;
         buyButton.SetActive(false);
         tmpSelection.SetActive(false);
+
+        for (int i = 0; i < visualWeapons.Length; i++)
+        {
+            if (visualWeapons[i].name == tmpSelection.transform.parent.gameObject.GetComponent<ShopPiece>().ShopSelection.name)
+            {
+                visualWeapons[i].SetActive(true);
+            }
+        }
+        UpgradeToShip(tmpSelection.transform.parent.gameObject.GetComponent<ShopPiece>().ShopSelection.iconName);
+        bank = bank - tmpSelection.transform.parent.GetComponent<ShopPiece>().ShopSelection.cost;
+        bankObj.transform.Find("bankText").GetComponent<TextMesh>().text = bank.ToString();
+        tmpSelection.transform.parent.transform.Find("itemText").GetComponent<TextMesh>().text = "SOLD";
+    }
+
+    void UpgradeToShip(string upgrade)
+    {
+
+        GameObject shipItem = GameObject.Instantiate(Resources.Load("Prefabs/Player/" + upgrade)) as GameObject;
+        shipItem.transform.SetParent(playerShip.transform);         //set Item parent to player's ship
+        shipItem.transform.localPosition = Vector3.zero;            //zero it's local position
     }
 
     private void SoldOut()
@@ -160,5 +175,6 @@ public class PlayerShipBuild : MonoBehaviour
     void Update()
 	{
 		AttemptSelection();
+      
 	}
 }
