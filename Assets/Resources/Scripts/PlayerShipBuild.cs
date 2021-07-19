@@ -114,12 +114,42 @@ public class PlayerShipBuild : MonoBehaviour
                     BuyItem();
 
                 }
+
+                else if (target.name == "START")
+                {
+                    StartGame();
+                }
+
+                else if (target.name == "WATCH AD")
+                {
+                    WatchAd();
+                }
 			}
 		}
 
  	}
 
- 
+    private void WatchAd()
+    {
+        throw new NotImplementedException();
+    }
+
+    //there are some fucking problems with this method
+    private void StartGame()
+    {
+        if (purchaseMade)
+        {
+            playerShip.name = "UpgradedShip";                       //rename our ship "UpgradedShip"
+            if (playerShip.transform.Find("energy +1(Clone)"))      //check if player bought health upgrade 
+            {
+                playerShip.GetComponent<Player>().Health = 2;       
+            }
+            DontDestroyOnLoad(playerShip);
+        }
+        UnityEngine.SceneManagement.SceneManager.LoadScene("testLevel");        //playerShip will be carried over to next scene
+    }
+
+
 
     private void BuyItem()
     {
