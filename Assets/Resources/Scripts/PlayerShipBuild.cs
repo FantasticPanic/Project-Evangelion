@@ -134,13 +134,13 @@ public class PlayerShipBuild : MonoBehaviour
         throw new NotImplementedException();
     }
 
-    //there are some fucking problems with this method
+    //there are some fucking problems with this method (hardcoded)
     private void StartGame()
     {
         if (purchaseMade)
         {
             playerShip.name = "UpgradedShip";                       //rename our ship "UpgradedShip"
-            if (playerShip.transform.Find("energy +1(Clone)"))      //check if player bought health upgrade 
+            if (playerShip.transform.Find("Armor Piece(Clone)"))      //check if player bought health upgrade 
             {
                 playerShip.GetComponent<Player>().Health = 2;       
             }

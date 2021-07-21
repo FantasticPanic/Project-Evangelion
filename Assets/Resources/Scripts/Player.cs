@@ -75,9 +75,9 @@ public class Player : MonoBehaviour, IActorTemplate
             {
                 //shield that the player can buy
                 //if player has a shield, destroy it
-                if (transform.Find("energy +1(Clone)"))
+                if (transform.Find("Armor Piece(Clone)"))
                 {
-                    Destroy(transform.Find("energy +1(Clone)").gameObject);
+                    Destroy(transform.Find("Armor Piece(Clone)").gameObject);   
                     health -= other.GetComponent<IActorTemplate>().SendDamage();
                 }
                 else
