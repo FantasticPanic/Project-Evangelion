@@ -7,8 +7,9 @@ using System;
 public class ScenesManager : MonoBehaviour
 {
     Scenes scenes;
-    float gameTimer = 0;
-    float[] endLevelTimer = { 30, 30, 45 };
+    [SerializeField]
+    private float gameTimer = 0;
+    float[] endLevelTimer = { 5, 5, 10 };
     int currentSceneNumber = 0;
     bool gameEnding = false;
 
@@ -56,6 +57,7 @@ public class ScenesManager : MonoBehaviour
             currentSceneNumber = SceneManager.GetActiveScene().buildIndex;
             GetScene();
         }
+        GameTimer();
     }
 
 

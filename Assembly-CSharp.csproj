@@ -70,6 +70,8 @@
     <Compile Include="Assets\Resources\Scripts\ShopPiece.cs" />
     <Compile Include="Assets\Resources\Scripts\IActorTemplate.cs" />
     <Compile Include="Assets\Resources\Scripts\LoadSceneComponent.cs" />
+    <Compile Include="Assets\Resources\Scripts\TitleComponent.cs" />
+    <Compile Include="Assets\Resources\Scripts\GameOverComponent.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

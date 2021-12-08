@@ -313,7 +313,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1034998439}
-  m_Text: Vortex Inferno
+  m_Text: Splash Screen
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
