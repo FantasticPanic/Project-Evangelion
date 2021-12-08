@@ -30,8 +30,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       // CameraSetup();
-       // LightSetup();
+     
     }
 
     // Update is called once per frame
@@ -78,8 +77,8 @@ public class GameManager : MonoBehaviour
     {
         switch (sceneNumber)
         {
-            //testLevel, Level1, Level2, Level3
-            case 3: case 4: case 5: case 6:
+            // Level1, Level2, Level3
+            case 3: case 4: case 5:
                 {
                     LightSetup();
                     CameraSetup();

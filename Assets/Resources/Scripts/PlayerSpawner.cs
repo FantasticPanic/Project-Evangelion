@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using Object = UnityEngine.Object;
 
 public class PlayerSpawner : MonoBehaviour
 {
@@ -8,17 +11,19 @@ public class PlayerSpawner : MonoBehaviour
     SOActorModel actorModel;
     GameObject playerShip;
     bool upgradeShip = false;
+
+  
     // Start is called before the first frame update
     void Start()
     {
         CreatePlayer();
-        GetComponentInChildren<Player>().enabled = true;
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-
+      
     }
 
     void CreatePlayer()
@@ -57,5 +62,7 @@ public class PlayerSpawner : MonoBehaviour
         playerShip.name = "Player";
         playerShip.transform.SetParent(this.transform);
         playerShip.transform.position = Vector3.zero;
+        //makes out player ship animate into the level
+        playerShip.GetComponent<PlayerTransition>().enabled = true;
     }
 }

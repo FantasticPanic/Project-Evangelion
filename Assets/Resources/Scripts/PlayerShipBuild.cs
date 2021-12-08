@@ -146,7 +146,7 @@ public class PlayerShipBuild : MonoBehaviour
             }
             DontDestroyOnLoad(playerShip);
         }
-        UnityEngine.SceneManagement.SceneManager.LoadScene("testLevel");        //playerShip will be carried over to next scene
+        GameManager.Instance.GetComponent <ScenesManager>().BeginGame(GameManager.gameLevelScene);      //playerShip will be carried over to next scene
     }
 
 
