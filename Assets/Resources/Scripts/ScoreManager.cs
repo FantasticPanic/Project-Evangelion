@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
-    static int playerScore;
+    public static int playerScore;
     public int PlayerScore
+
     {
         get
         {
@@ -19,8 +22,16 @@ public class ScoreManager : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        GameObject.Find("score").GetComponent<TextMeshProUGUI>().text = ScoreManager.playerScore.ToString();
+    }
     public void ResetScore()
     {
-        playerScore = 000000000;
+       playerScore = 00000000;
+        if (GameObject.Find("score"))
+        {
+            GameObject.Find("score").GetComponent<TextMeshProUGUI>().text = playerScore.ToString();
+        }
     }
 }

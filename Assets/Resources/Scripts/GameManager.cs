@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static int currentScene = 0;
     public static int gameLevelScene = 3;
     public static int playerLives = 3;
+  
 
     bool died = false;
     public bool Died
@@ -30,13 +32,17 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-     
+        SetLivesDisplay(playerLives);
+        GameManager.Instance.GetComponent<ScoreManager>().ResetScore();
+        
     }
+
+
 
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
 
     void CameraSetup()
@@ -59,6 +65,8 @@ public class GameManager : MonoBehaviour
         dirLight.transform.eulerAngles = new Vector3(50, -30, 0);
         dirLight.GetComponent<Light>().color = new Color32(152, 204, 255, 255);
     }
+
+
 
     void CheckGameManagerIsInTheScene()
     {
@@ -87,9 +95,38 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //set the player's lives
+    public void SetLivesDisplay(int players)
+    {
+        if (GameObject.Find("lives"))
+        {
+            GameObject lives = GameObject.Find("lives");
+
+            if (lives.transform.childCount < 1)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    GameObject life = GameObject.Instantiate(Resources.Load("Prefabs/Player/life")) as GameObject;
+                    life.transform.SetParent(lives.transform);
+                }
+            }
+            //set lives display on HUD
+            for (int i = 0; i < lives.transform.childCount; i++)
+            {
+                lives.transform.GetChild(i).localScale = new Vector3(1, 1, 1);
+            }
+            //remove visual lives
+            for (int i = 0; i < (lives.transform.childCount - players); i++)
+            {
+                lives.transform.GetChild(lives.transform.childCount - i - 1).localScale = Vector3.zero;
+            }
+        }
+
+    }
+
     public void LifeLost()
     {
-        // lose life
+        // subtract player lives when hit
         if (playerLives >= 1)
         {
             playerLives--;

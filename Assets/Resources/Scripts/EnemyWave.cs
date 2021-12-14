@@ -61,6 +61,7 @@ public class EnemyWave : MonoBehaviour, IActorTemplate
             {
                 Die();
                 GameManager.Instance.GetComponent<ScoreManager>().SetScore(score);
+                Debug.Log(GameManager.Instance.GetComponent<ScoreManager>().PlayerScore);
             }
         }
     }

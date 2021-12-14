@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
+using TMPro;
 
 public class ScenesManager : MonoBehaviour
 {
@@ -22,6 +24,22 @@ public class ScenesManager : MonoBehaviour
         level2,
         level3,
         gameOver
+    }
+
+
+    private void Start()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode additive)
+    {
+        GetComponent<GameManager>().SetLivesDisplay(GameManager.playerLives);
+
+       /* if (GameObject.Find("score"))
+        {
+            GameObject.Find("score").GetComponent<TextMeshProUGU>().text = ScoreManager.playerScore.ToString();
+        }*/
     }
 
     public void ResetScene()
