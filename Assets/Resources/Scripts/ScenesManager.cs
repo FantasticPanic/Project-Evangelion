@@ -53,6 +53,10 @@ public class ScenesManager : MonoBehaviour
     {
         gameEnding = false;
         gameTimer = 0;
+        if (GameManager.playerLives < 3)
+        {
+            GameManager.playerLives = 3;
+        }
         SceneManager.LoadScene(GameManager.currentScene + 1);
     }
 
