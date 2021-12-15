@@ -8,6 +8,7 @@ public class PlayerShipBuild : MonoBehaviour
 	GameObject target;
  	GameObject tmpSelection;
 	GameObject textBoxPanel;
+    int number;
 
     [SerializeField]
     GameObject[] visualWeapons;
@@ -167,7 +168,10 @@ public class PlayerShipBuild : MonoBehaviour
             }
         }
         UpgradeToShip(tmpSelection.transform.parent.gameObject.GetComponent<ShopPiece>().ShopSelection.iconName);
-        bank = bank - tmpSelection.transform.parent.GetComponent<ShopPiece>().ShopSelection.cost;
+        if (int.TryParse(tmpSelection.transform.parent.GetComponent<ShopPiece>().ShopSelection.cost, out number))
+        {
+            bank = bank - number;
+        }
         bankObj.transform.Find("bankText").GetComponent<TextMesh>().text = bank.ToString();
         tmpSelection.transform.parent.transform.Find("itemText").GetComponent<TextMesh>().text = "SOLD";
     }
@@ -187,19 +191,27 @@ public class PlayerShipBuild : MonoBehaviour
 
     private void LackofCredits()
     {
-        if (bank < target.transform.GetComponent<ShopPiece>().ShopSelection.cost)
+        if (int.TryParse(target.transform.GetComponent<ShopPiece>().ShopSelection.cost, out number))
         {
-            Debug.Log("CAN'T BUY");
-           // buyButton.SetActive(false);
+
+            if (bank < number)
+            {
+                Debug.Log("CAN'T BUY");
+                // buyButton.SetActive(false);
+            }
         }
     }
 
     private void Affordable()
     {
-        if (bank >= target.transform.GetComponent<ShopPiece>().ShopSelection.cost)
+        if (int.TryParse(target.transform.GetComponent<ShopPiece>().ShopSelection.cost, out number))
         {
-            Debug.Log("CAN BUY");
-            buyButton.SetActive(true);
+
+            if (bank >= number)
+            {
+                Debug.Log("CAN BUY");
+                buyButton.SetActive(true);
+            }
         }
     }
 

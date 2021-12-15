@@ -5,5 +5,5 @@ public class SOShopSelection : ScriptableObject
     public Sprite icon;
     public string iconName;
     public string description;
-    public int cost;
+    public string cost;
 }
