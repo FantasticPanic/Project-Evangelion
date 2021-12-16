@@ -6,4 +6,6 @@ public class SOShopSelection : ScriptableObject
     public string iconName;
     public string description;
     public string cost;
+    public int convertedCost;
+    
 }

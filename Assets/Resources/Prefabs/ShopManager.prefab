@@ -302,7 +302,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4167317910166834}
-  - component: {fileID: 114195625801212206}
   m_Layer: 0
   m_Name: shop
   m_TagString: Untagged
@@ -324,31 +323,6 @@ Transform:
   m_Father: {fileID: 4721583551143574}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114195625801212206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1483259108793996}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87964c7f5a51f3e43abf2177733b24ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shopButtons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  visualWeapons: []
-  defaultPlayerShip: {fileID: 0}
 --- !u!1 &1513336318306688
 GameObject:
   m_ObjectHideFlags: 0

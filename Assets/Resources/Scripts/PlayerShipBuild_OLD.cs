@@ -1,14 +1,13 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class PlayerShipBuild : MonoBehaviour
+public class PlayerShipBuild_OLD : MonoBehaviour 
 {
-    //[SerializeField]
-    //GameObject[] shopButtons;
-    GameObject target;
-    GameObject tmpSelection;
-    GameObject textBoxPanel;
+	[SerializeField]
+	GameObject[] shopButtons;
+	GameObject target;
+ 	GameObject tmpSelection;
+	GameObject textBoxPanel;
     int number;
 
     [SerializeField]
@@ -22,17 +21,17 @@ public class PlayerShipBuild : MonoBehaviour
     bool purchaseMade = false;       //boolean variable for purchasing
 
     void Start()
-    {
-        textBoxPanel = GameObject.Find("textBoxPanel");
-        TurnOffSelectionHighlights();
-        purchaseMade = false;
+	{
+		textBoxPanel = GameObject.Find("textBoxPanel");
+		TurnOffSelectionHighlights();
+        purchaseMade = false;                         
         bankObj = GameObject.Find("bank");
         bankObj.GetComponentInChildren<TextMesh>().text = bank.ToString();
-        buyButton = GameObject.Find("BUY?").gameObject;
+        buyButton = textBoxPanel.transform.Find("BUY ?").gameObject;
 
         TurnOffPlayerShipVisuals();
         PreparePlayerShipForUpgrade();
-    }
+	}
 
     //reset visual of player's ship
     private void PreparePlayerShipForUpgrade()
@@ -50,8 +49,7 @@ public class PlayerShipBuild : MonoBehaviour
             visualWeapons[i].gameObject.SetActive(false);
         }
     }
-    //REMOVED 01
-    /*
+
     GameObject ReturnClickedObject (out RaycastHit hit)
 	{
 		GameObject target = null;
@@ -62,42 +60,28 @@ public class PlayerShipBuild : MonoBehaviour
 		}
 		return target;
 	}
-    */
+	
+	void TurnOffSelectionHighlights()
+	{
+		for (int i = 0; i < shopButtons.Length; i++)
+		{
+			shopButtons[i].SetActive(false);
+		}
+	}
 
-    void TurnOffSelectionHighlights()
-    {
-        GameObject[] selections = GameObject.FindGameObjectsWithTag("Selection");
-        for (int i = 0; i < selections.Length; i++)
-        {
-            if (selections[i].GetComponentInParent<ShopPiece>())
-            {
-                if (selections[i].GetComponentInParent<ShopPiece>().ShopSelection.iconName == "sold out")
-                {
-                    selections[i].SetActive(false);
-                }
-            }
-        }
-    }
-
-    void UpdateDescriptionBox()
-    {
-        textBoxPanel.transform.Find("name").gameObject.GetComponent<TextMesh>().text = tmpSelection.GetComponentInParent<ShopPiece>().ShopSelection.iconName;
-        textBoxPanel.transform.Find("desc").gameObject.GetComponent<TextMesh>().text = tmpSelection.GetComponentInParent<ShopPiece>().ShopSelection.description;
-    }
-
-    //REMOVED 02
-    /*
+	void UpdateDescriptionBox()
+	{
+		textBoxPanel.transform.Find("name").gameObject.GetComponent<TextMesh>().text = tmpSelection.GetComponentInParent<ShopPiece>().ShopSelection.iconName;
+		textBoxPanel.transform.Find("desc").gameObject.GetComponent<TextMesh>().text = tmpSelection.GetComponentInParent<ShopPiece>().ShopSelection.description;	
+	}
 	void Select()
 	{
 		tmpSelection = target.transform.Find("SelectionQuad").gameObject;
 		tmpSelection.SetActive(true);
 	}
-    */
-
-    public void AttemptSelection(GameObject buttonName)
-    {
-        //REMOVED 03
-        /*
+	
+	public void AttemptSelection()
+	{
 		if (Input.GetMouseButtonDown (0)) 
 		{
 			RaycastHit hitInfo;
@@ -105,37 +89,27 @@ public class PlayerShipBuild : MonoBehaviour
 
 			if (target != null)
 			{
-            
 				if (target.transform.Find("itemText"))
 				{
 						TurnOffSelectionHighlights();
 						Select();
-                        */
-        if (buttonName)
-        {
-            TurnOffSelectionHighlights();
-            tmpSelection = buttonName;
-            tmpSelection.transform.GetChild(1).gameObject.SetActive(true);
-        }
-        UpdateDescriptionBox();
+						UpdateDescriptionBox();
 
-        //if not already sold
-        if (buttonName.GetComponentInChildren<Text>().text != "SOLD")
-        {
-            //can afford
-            Affordable();
+                    //if not already sold
+                    if (target.transform.Find("itemText").GetComponent<TextMesh>().text != "SOLD")
+                    {
+                        //can afford
+                        Affordable();
 
-            //can not afford
-            LackofCredits();
-        }
-        else if (buttonName.GetComponentInChildren<Text>().text == "SOLD")
-        {
-            SoldOut();
-        }
-
-    }
-    //REMOVED 04
-    /*
+                        //can not afford
+                        LackofCredits();
+                    }
+                    else if (target.transform.Find("itemText").GetComponent<TextMesh>().text == "SOLD")
+                    {
+                        SoldOut();
+                    }
+						
+				 }
                 else if (target.name == "BUY ?")
                 {
                     BuyItem();
@@ -152,51 +126,54 @@ public class PlayerShipBuild : MonoBehaviour
                     WatchAd();
                 }
 			}
-            */
+		}
+
+ 	}
 
     private void WatchAd()
     {
         throw new NotImplementedException();
     }
 
-    public void StartGame()
+    //there are some fucking problems with this method (hardcoded)
+    private void StartGame()
     {
         if (purchaseMade)
         {
             playerShip.name = "UpgradedShip";                       //rename our ship "UpgradedShip"
             if (playerShip.transform.Find("Armor Piece(Clone)"))      //check if player bought health upgrade 
             {
-                playerShip.GetComponent<Player>().Health = 2;
+                playerShip.GetComponent<Player>().Health = 2;       
             }
             DontDestroyOnLoad(playerShip);
         }
-        GameManager.Instance.GetComponent<ScenesManager>().BeginGame(GameManager.gameLevelScene);      //playerShip will be carried over to next scene
+        GameManager.Instance.GetComponent <ScenesManager>().BeginGame(GameManager.gameLevelScene);      //playerShip will be carried over to next scene
     }
 
 
 
-    public void BuyItem()
+    private void BuyItem()
     {
         Debug.Log("PURCHASED");
         purchaseMade = true;
         buyButton.SetActive(false);
-        //tmpSelection.SetActive(false);
+        tmpSelection.SetActive(false);
 
         for (int i = 0; i < visualWeapons.Length; i++)
         {
-            if (visualWeapons[i].name == tmpSelection.GetComponent<ShopPiece>().ShopSelection.iconName)
+            if (visualWeapons[i].name == tmpSelection.transform.parent.gameObject.GetComponent<ShopPiece>().ShopSelection.iconName)
             {
                 //gameobject name has to be the same as iconName 
                 visualWeapons[i].SetActive(true);
             }
         }
-        UpgradeToShip(tmpSelection.GetComponent<ShopPiece>().ShopSelection.iconName);
-      //  if (tmpSelection.transform.parent.GetComponent<ShopPiece>().ShopSelection.cost == System.Int32.Parse()))
-        //{
-            bank = bank - System.Int32.Parse(tmpSelection.GetComponent<ShopPiece>().ShopSelection.cost);
-        //}
+        UpgradeToShip(tmpSelection.transform.parent.gameObject.GetComponent<ShopPiece>().ShopSelection.iconName);
+        if (int.TryParse(tmpSelection.transform.parent.GetComponent<ShopPiece>().ShopSelection.cost, out number))
+        {
+            bank = bank - number;
+        }
         bankObj.transform.Find("bankText").GetComponent<TextMesh>().text = bank.ToString();
-        tmpSelection.transform.Find("itemText").GetComponent<Text>().text = "SOLD";
+        tmpSelection.transform.parent.transform.Find("itemText").GetComponent<TextMesh>().text = "SOLD";
     }
 
     void UpgradeToShip(string upgrade)
@@ -210,42 +187,37 @@ public class PlayerShipBuild : MonoBehaviour
     private void SoldOut()
     {
         Debug.Log("SOLD OUT");
-        buyButton.SetActive(false);
     }
 
     private void LackofCredits()
     {
-        //  if (int.TryParse(target.transform.GetComponent<ShopPiece>().ShopSelection.cost, out number))
-        //{
-        
-            if (bank < System.Int32.Parse(tmpSelection.GetComponentInChildren<Text>().text))
+        if (int.TryParse(target.transform.GetComponent<ShopPiece>().ShopSelection.cost, out number))
+        {
+
+            if (bank < number)
             {
                 Debug.Log("CAN'T BUY");
-                buyButton.SetActive(false);
+                // buyButton.SetActive(false);
             }
-           
-        //}
+        }
     }
 
     private void Affordable()
     {
-        //  if (int.TryParse(target.transform.GetComponent<ShopPiece>().ShopSelection.cost, out number))
-        //{
-        
-            if (bank >= System.Int32.Parse(tmpSelection.GetComponentInChildren<Text>().text))
+        if (int.TryParse(target.transform.GetComponent<ShopPiece>().ShopSelection.cost, out number))
+        {
+
+            if (bank >= number)
             {
                 Debug.Log("CAN BUY");
                 buyButton.SetActive(true);
+            }
         }
-        
-      //  }
     }
 
-    //REMOVED 05
-    /* void Update()
-        {
-            AttemptSelection();
-
-        }
-        */
+    void Update()
+	{
+		AttemptSelection();
+      
+	}
 }
