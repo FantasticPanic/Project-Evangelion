@@ -47,7 +47,7 @@ public class PlayerSpawner : MonoBehaviour
 
             GameManager.Instance.Died = false;
             actorModel = Object.Instantiate(Resources.Load("Scripts/ScriptableObjects/Player_Default")) as SOActorModel;
-            playerShip = GameObject.Instantiate(actorModel.actor, this.transform.position, Quaternion.Euler(270, 180, 0)) as GameObject;
+            playerShip = GameObject.Instantiate(actorModel.actor, this.transform.position, Quaternion.Euler(0, 0, 0)) as GameObject;
 
             playerShip.GetComponent<IActorTemplate>().ActorStats(actorModel);
         }
@@ -55,10 +55,10 @@ public class PlayerSpawner : MonoBehaviour
         {
             playerShip = GameObject.Find("UpgradedShip");
         }
-        
+
         //set up player
         playerShip.transform.rotation = Quaternion.Euler(0, 90, 0);
-        playerShip.transform.localScale = new Vector3(3, 3, 3);
+        playerShip.transform.localScale = new Vector3(5, 5, 5);
         playerShip.name = "Player";
         playerShip.transform.SetParent(this.transform);
         playerShip.transform.position = Vector3.zero;

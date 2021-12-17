@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: f89c8c63458f7244084f8db4731ac983, type: 3}
   iconName: Sold out
-  description: When an item is no longer available
+  description: Item is currently not available
   cost: Sold Out
+  convertedCost: 0

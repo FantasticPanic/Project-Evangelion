@@ -1357,6 +1357,22 @@ PrefabInstance:
       propertyPath: score
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1515502517366453479, guid: 2eb2afae5ee3054409ae13b6922f2546, type: 3}
+      propertyPath: levelSongs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1515502517366453479, guid: 2eb2afae5ee3054409ae13b6922f2546, type: 3}
+      propertyPath: levelSongs.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: e4ac1d4ab356f834fa144f0d3dfc8cb6, type: 3}
+    - target: {fileID: 1515502517366453479, guid: 2eb2afae5ee3054409ae13b6922f2546, type: 3}
+      propertyPath: levelSongs.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 03320c599d8020c469a4969946664ee9, type: 3}
+    - target: {fileID: 1515502517366453479, guid: 2eb2afae5ee3054409ae13b6922f2546, type: 3}
+      propertyPath: levelSongs.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 2c7ec53cbe1812142a99fd48bb9f5285, type: 3}
     - target: {fileID: 1560036099027396133, guid: 2eb2afae5ee3054409ae13b6922f2546, type: 3}
       propertyPath: actualLives
       value: 6

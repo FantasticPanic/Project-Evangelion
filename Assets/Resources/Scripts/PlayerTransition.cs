@@ -6,8 +6,8 @@ using UnityEngine;
 public class PlayerTransition : MonoBehaviour
 {
 
-    Vector3 transitionToEnd = new Vector3(-100, 0, 0);
-    Vector3 transtiionToCompleteGame = new Vector3(7000, 0, 0);
+    Vector3 transitionToEnd = new Vector3(-100,0,0);
+    Vector3 transitionToCompleteGame = new Vector3(7000, 0, 0);
     Vector3 readyPos = new Vector3(900, 0, 0);
     Vector3 startPos;
 
@@ -51,11 +51,30 @@ public class PlayerTransition : MonoBehaviour
         {
             StartCoroutine(PlayerMovement(transitionToEnd, 10));
         }
+
+        if (levelEnds)
+        {
+            GetComponent<Player>().enabled = false;
+            GetComponent<CapsuleCollider>().enabled = false;
+            Distance();
+            StartCoroutine(PlayerMovement(transitionToEnd, 200));
+        }
+        if (gameCompleted)
+        {
+            GetComponent<Player>().enabled = false;
+            GetComponent<CapsuleCollider>().enabled = false;
+            StartCoroutine(PlayerMovement(transitionToCompleteGame, 200));
+        }
+
+        if (speedOff)
+        {
+            Invoke("SpeedOff", 1f);
+        }
     }
 
     void SpeedOff()
     {
-        transform.Translate(Vector3.left * Time.deltaTime * 800);
+        transform.Translate(Vector3.forward * Time.deltaTime * 800);
     }
 
     IEnumerator PlayerMovement(Vector3 point, float transitionSpeed)

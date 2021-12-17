@@ -24,7 +24,7 @@ public class ScoreManager : MonoBehaviour
 
     private void Update()
     {
-        GameObject.Find("score").GetComponent<TextMeshProUGUI>().text = ScoreManager.playerScore.ToString();
+       // GameObject.Find("score").GetComponent<TextMeshProUGUI>().text = ScoreManager.playerScore.ToString();
     }
     public void ResetScore()
     {

@@ -1,4 +1,5 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -81,8 +82,10 @@ public class PlayerShipBuild : MonoBehaviour
 
     void UpdateDescriptionBox()
     {
-        textBoxPanel.transform.Find("name").gameObject.GetComponent<TextMesh>().text = tmpSelection.GetComponentInParent<ShopPiece>().ShopSelection.iconName;
-        textBoxPanel.transform.Find("desc").gameObject.GetComponent<TextMesh>().text = tmpSelection.GetComponentInParent<ShopPiece>().ShopSelection.description;
+        //textBoxPanel.transform.Find("name").gameObject.GetComponent<TextMesh>().text = tmpSelection.GetComponentInParent<ShopPiece>().ShopSelection.iconName;
+        //textBoxPanel.transform.Find("desc").gameObject.GetComponent<TextMesh>().text = tmpSelection.GetComponentInParent<ShopPiece>().ShopSelection.description;
+        GameObject.Find("name").gameObject.GetComponent<TextMeshProUGUI>().text = tmpSelection.GetComponentInParent<ShopPiece>().ShopSelection.iconName;
+        GameObject.Find("description").gameObject.GetComponent<TextMeshProUGUI>().text = tmpSelection.GetComponentInParent<ShopPiece>().ShopSelection.description;
     }
 
     //REMOVED 02
