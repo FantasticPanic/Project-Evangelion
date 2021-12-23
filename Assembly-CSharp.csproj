@@ -66,13 +66,14 @@
     <Compile Include="Assets\Resources\Scripts\GameManager.cs" />
     <Compile Include="Assets\Resources\Scripts\BasicEnemyRotate.cs" />
     <Compile Include="Assets\Resources\Scripts\SOActorModel.cs" />
+    <Compile Include="Assets\StarSparrow\Readme\Readme Files\Scripts\ReadmeStarSparrow.cs" />
     <Compile Include="Assets\Resources\Scripts\PlayerSpawner.cs" />
     <Compile Include="Assets\Resources\Scripts\BShotComponent.cs" />
     <Compile Include="Assets\Resources\Scripts\LoadSceneComponent.cs" />
     <Compile Include="Assets\Resources\Scripts\PlayerBullet.cs" />
     <Compile Include="Assets\Resources\Scripts\ShopPiece.cs" />
     <Compile Include="Assets\Resources\Scripts\IActorTemplate.cs" />
-    <Compile Include="Assets\StarSparrow\Readme\Readme Files\Scripts\ReadmeStarSparrow.cs" />
+    <Compile Include="Assets\Resources\Scripts\PauseComponent.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
