@@ -8,10 +8,13 @@ public class PauseComponent : MonoBehaviour
 
     [SerializeField]
     private GameObject pauseScreen;
+    [SerializeField]
+    private GameObject pauseButton;
 
     private void Awake()
     {
         pauseScreen.SetActive(false);
+        pauseButton = GameObject.Find("PauseButton");
     }
     // Start is called before the first frame update
     void Start()
@@ -39,12 +42,14 @@ public class PauseComponent : MonoBehaviour
     {
         pauseScreen.SetActive(true);
         Time.timeScale = 0;
+        pauseButton.SetActive(false);
     }
 
     public void Resume()
     {
         pauseScreen.SetActive(false);
         Time.timeScale = 1;
+        pauseButton.SetActive(true);
     }
 
     public void Quit()
