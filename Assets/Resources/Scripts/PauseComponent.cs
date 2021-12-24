@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class PauseComponent : MonoBehaviour
 {
@@ -10,6 +11,13 @@ public class PauseComponent : MonoBehaviour
     private GameObject pauseScreen;
     [SerializeField]
     private GameObject pauseButton;
+    [SerializeField]
+    AudioMixer masterMixer;
+
+    [SerializeField]
+    GameObject musicSlider;
+    [SerializeField]
+    GameObject effectsSlider;
 
     private void Awake()
     {
@@ -60,4 +68,31 @@ public class PauseComponent : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    public void SetMusicSlider()
+    {
+       
+        if (musicSlider.GetComponent<Slider>().value == musicSlider.GetComponent<Slider>().minValue)
+        {
+            //set the music mix completely quiet when it is at min value
+            masterMixer.SetFloat("musicVol", -100);
+        }
+        else
+        {
+            masterMixer.SetFloat("musicVol", musicSlider.GetComponent<Slider>().value);
+        }
+    }
+
+    public void SetEffectsSlider()
+    {
+        
+        if (effectsSlider.GetComponent<Slider>().value == effectsSlider.GetComponent<Slider>().minValue)
+        {
+            //set the music mix completely quiet when it is at min value
+            masterMixer.SetFloat("effectsVol", -100);
+        }
+        else
+        {
+            masterMixer.SetFloat("effectsVol", effectsSlider.GetComponent<Slider>().value);
+        }
+    }
 }

@@ -11,7 +11,7 @@ public class ScenesManager : MonoBehaviour
     Scenes scenes;
     [SerializeField]
     private float gameTimer = 0;
-    float[] endLevelTimer = { 5, 5, 10 };
+    float[] endLevelTimer = { 30, 30, 10 };
     int currentSceneNumber = 0;
     bool gameEnding = false;
     public AudioClip[] levelSongs;
