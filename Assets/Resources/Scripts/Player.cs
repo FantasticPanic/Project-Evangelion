@@ -91,7 +91,7 @@ public class Player : MonoBehaviour, IActorTemplate
             if (health <= 0)
             {
                 Die();
-
+               
             }
         }
     }

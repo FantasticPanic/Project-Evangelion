@@ -19,6 +19,8 @@ public class EnemyWave : MonoBehaviour, IActorTemplate
     Vector3 sineVer;
     float time;
 
+    Player player;
+
     void FixedUpdate()
     {
          Attack();
@@ -51,7 +53,7 @@ public class EnemyWave : MonoBehaviour, IActorTemplate
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Bullet")
         {
             if (health >= 1)
             {
@@ -62,6 +64,7 @@ public class EnemyWave : MonoBehaviour, IActorTemplate
                 Die();
                 GameManager.Instance.GetComponent<ScoreManager>().SetScore(score);
                 Debug.Log(GameManager.Instance.GetComponent<ScoreManager>().PlayerScore);
+               
             }
         }
     }

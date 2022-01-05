@@ -120,12 +120,28 @@ public class ScenesManager : MonoBehaviour
                             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerTransition>().GameCompleted = true;
                         }
                         StartCoroutine(MusicVolume(MusicMode.fadeDown));
+                        SendInJSONFormat(SceneManager.GetActiveScene().name);
                         Invoke("NextLevel", 4);
                     }
                 }
                 //check if audio clip in our Audio Source is empty
                 break;
                 }
+    }
+
+    private void SendInJSONFormat(string lastLevel)
+    {
+        if (lastLevel == "level3")
+        {
+            GameStats gameStats = new GameStats();
+
+            gameStats.livesLeft = GameManager.playerLives;
+            gameStats.completed = System.DateTime.Now.ToString();
+           // gameStats.score = ScoreManager.playerScore;
+
+            string json = JsonUtility.ToJson(gameStats, true);
+            Debug.Log(json);
+        }
     }
 
     private void LevelMusic()
@@ -183,6 +199,7 @@ public class ScenesManager : MonoBehaviour
         StartCoroutine(MusicVolume(MusicMode.noSound));
         gameTimer = 0;
         SceneManager.LoadScene(GameManager.currentScene);
+        GameManager.Instance.GetComponent<ScoreManager>().ResetScore();
 
     }
 

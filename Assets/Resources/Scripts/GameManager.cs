@@ -132,6 +132,7 @@ public class GameManager : MonoBehaviour
             playerLives--;
             Debug.Log("Lives left: " + playerLives);
             GetComponent<ScenesManager>().ResetScene();
+
         }
         else
         {

@@ -6,6 +6,7 @@ using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
+    [SerializeField]
     public static int playerScore;
     public int PlayerScore
 
@@ -24,14 +25,16 @@ public class ScoreManager : MonoBehaviour
 
     private void Update()
     {
-       // GameObject.Find("score").GetComponent<TextMeshProUGUI>().text = ScoreManager.playerScore.ToString();
+        GameObject.Find("score").GetComponent<TextMeshProUGUI>().text = playerScore.ToString();
     }
     public void ResetScore()
     {
-       playerScore = 00000000;
+        playerScore = 0;
         if (GameObject.Find("score"))
         {
+           
             GameObject.Find("score").GetComponent<TextMeshProUGUI>().text = playerScore.ToString();
+
         }
     }
 }
