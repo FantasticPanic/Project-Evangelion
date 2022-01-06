@@ -3893,6 +3893,10 @@ PrefabInstance:
       propertyPath: score
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1515502517366453478, guid: 2eb2afae5ee3054409ae13b6922f2546, type: 3}
+      propertyPath: scoreObj
+      value: 
+      objectReference: {fileID: 931145391}
     - target: {fileID: 1515502517366453479, guid: 2eb2afae5ee3054409ae13b6922f2546, type: 3}
       propertyPath: levelSongs.Array.size
       value: 3
