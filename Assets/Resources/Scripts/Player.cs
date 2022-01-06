@@ -11,6 +11,15 @@ public class Player : MonoBehaviour, IActorTemplate
     GameObject actor;
     GameObject fire;
 
+    float camTravelSpeed;
+    public float CamTravelSpeed
+    {
+        get { return camTravelSpeed; }
+        set { camTravelSpeed = value; }
+    }
+
+    float movingScreen;
+
     public int Health
     {
         get { return health; }
