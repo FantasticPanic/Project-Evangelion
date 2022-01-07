@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
         get { return instance; }
     }
 
+    GameObject gameCamera;
+
     void Awake()
     {
         CheckGameManagerIsInTheScene();
@@ -45,10 +47,12 @@ public class GameManager : MonoBehaviour
        
     }
 
-    void CameraSetup()
+    void CameraSetup(float camSpeed)
     {
-        GameObject gameCamera = GameObject.FindGameObjectWithTag("MainCamera");
 
+       
+        GameObject gameCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        gameCamera.GetComponent<CameraMovement>().CamSpeed = camSpeed;
         //Camera Transform
         gameCamera.transform.position = new Vector3(0, 0, -300);
         gameCamera.transform.eulerAngles = new Vector3(0, 0, 0);
@@ -86,10 +90,17 @@ public class GameManager : MonoBehaviour
         switch (sceneNumber)
         {
             // Level1, Level2, Level3
-            case 3: case 4: case 5:
+            case 3: 
+                {
+                    
+                    CameraSetup(150);
+                    break;
+                }
+
+            case 4: case 5:
                 {
                     LightSetup();
-                    CameraSetup();
+                    CameraSetup(0);
                     break;
                 }
         }
