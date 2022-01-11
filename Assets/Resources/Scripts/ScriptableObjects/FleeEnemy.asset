@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8be4ee304253da44984e876228683035, type: 3}
+  m_Name: FleeEnemy
+  m_EditorClassIdentifier: 
+  actorName: Fleeing Enemy
+  attackType: 0
+  description: Enemy flees away from player
+  health: 3
+  speed: 1000
+  hitPower: 1
+  actor: {fileID: 674871752954568761, guid: c7af914e5413aac4d9d195a5597c0f30, type: 3}
+  actorBullets: {fileID: 0}
+  score: 10

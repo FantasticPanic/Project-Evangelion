@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyFlee : MonoBehaviour, IActorTemplate {
 
@@ -9,9 +10,49 @@ public class EnemyFlee : MonoBehaviour, IActorTemplate {
     int hitPower;
     int score;
 
-	    public void ActorStats(SOActorModel actorModel)
+    GameObject player;
+    bool gameStarts = false;
+
+    [SerializeField]
+    float enemyDistanceRun = 200;
+    NavMeshAgent enemyAgent;
+
+
+    void Start()
+    {
+        ActorStats(actorModel);
+        Invoke("DelayedStart", 0.5f);
+    }
+
+    void Update()
+    {
+        if (gameStarts)
+        {
+            if (player != null)
+            {
+                float distance = Vector3.Distance(transform.position, player.transform.position);
+
+                if (distance < enemyDistanceRun)
+                {
+                    Vector3 dirToPlayer = transform.position - player.transform.position;
+                    Vector3 newPos = transform.position + dirToPlayer;
+                    enemyAgent.SetDestination(newPos);
+                }
+            }
+        }
+    }
+
+    void DelayedStart()
+    {
+        gameStarts = true;
+        player = GameObject.FindGameObjectWithTag("Player");
+        enemyAgent = GetComponent<NavMeshAgent>();
+    }
+
+    public void ActorStats(SOActorModel actorModel)
     {
         health = actorModel.health;
+        GetComponent<NavMeshAgent>().speed = actorModel.speed;
         hitPower = actorModel.hitPower;
         score = actorModel.score;
     }
