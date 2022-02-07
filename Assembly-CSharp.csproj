@@ -61,13 +61,14 @@
     <Compile Include="Assets\DefaultPlayables\NavMeshAgentControl\NavMeshAgentControlTrack.cs" />
     <Compile Include="Assets\DefaultPlayables\ScreenFader\ScreenFaderTrack.cs" />
     <Compile Include="Assets\DefaultPlayables\NavMeshAgentControl\NavMeshAgentControlBehaviour.cs" />
+    <Compile Include="Assets\Resources\Enemy Scripts\TurnOnPhysics.cs" />
     <Compile Include="Assets\DefaultPlayables\TransformTween\TransformTweenBehaviour.cs" />
-    <Compile Include="Assets\Resources\Script\CameraMovement.cs" />
-    <Compile Include="Assets\Resources\Script\RadarRotation.cs" />
+    <Compile Include="Assets\Resources\Enemy Scripts\CameraMovement.cs" />
+    <Compile Include="Assets\Resources\Enemy Scripts\RadarRotation.cs" />
     <Compile Include="Assets\Resources\Scripts\GameOverComponent.cs" />
     <Compile Include="Assets\DefaultPlayables\LightControl\LightControlClip.cs" />
     <Compile Include="Assets\DefaultPlayables\TimeDilation\TimeDilationClip.cs" />
-    <Compile Include="Assets\Resources\Script\BossScript.cs" />
+    <Compile Include="Assets\Resources\Enemy Scripts\BossScript.cs" />
     <Compile Include="Assets\Resources\Scripts\Player.cs" />
     <Compile Include="Assets\DefaultPlayables\TextSwitcher\TextSwitcherBehaviour.cs" />
     <Compile Include="Assets\Resources\Scripts\TitleComponent.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="Assets\DefaultPlayables\NavMeshAgentControl\NavMeshAgentControlMixerBehaviour.cs" />
     <Compile Include="Assets\Resources\Scripts\SOShopSelection.cs" />
     <Compile Include="Assets\DefaultPlayables\TimeDilation\TimeDilationMixerBehaviour.cs" />
+    <Compile Include="Assets\Resources\Enemy Scripts\SelfDestruct.cs" />
     <Compile Include="Assets\DefaultPlayables\TransformTween\TransformTweenTrack.cs" />
     <Compile Include="Assets\DefaultPlayables\Video\VideoScriptPlayableTrack.cs" />
     <Compile Include="Assets\DefaultPlayables\TimeDilation\TimeDilationTrack.cs" />
@@ -93,7 +95,7 @@
     <Compile Include="Assets\DefaultPlayables\TextSwitcher\TextSwitcherClip.cs" />
     <Compile Include="Assets\Resources\Scripts\PlayerSpawner.cs" />
     <Compile Include="Assets\Resources\Scripts\BShotComponent.cs" />
-    <Compile Include="Assets\Resources\Script\EnemyFlee.cs" />
+    <Compile Include="Assets\Resources\Enemy Scripts\EnemyFlee.cs" />
     <Compile Include="Assets\DefaultPlayables\Video\VideoSchedulerPlayableBehaviour.cs" />
     <Compile Include="Assets\DefaultPlayables\ScreenFader\ScreenFaderBehaviour.cs" />
     <Compile Include="Assets\DefaultPlayables\TransformTween\TransformTweenClip.cs" />
@@ -102,14 +104,12 @@
     <Compile Include="Assets\Resources\Scripts\PlayerBullet.cs" />
     <Compile Include="Assets\Resources\Scripts\ShopPiece.cs" />
     <Compile Include="Assets\Resources\Scripts\GameStats.cs" />
-    <Compile Include="Assets\Resources\Script\BossTriggerBox.cs" />
+    <Compile Include="Assets\Resources\Enemy Scripts\BossTriggerBox.cs" />
     <Compile Include="Assets\DefaultPlayables\NavMeshAgentControl\NavMeshAgentControlClip.cs" />
     <Compile Include="Assets\Resources\Scripts\IActorTemplate.cs" />
     <Compile Include="Assets\DefaultPlayables\TimeDilation\TimeDilationBehaviour.cs" />
     <Compile Include="Assets\DefaultPlayables\LightControl\LightControlMixerBehaviour.cs" />
     <Compile Include="Assets\DefaultPlayables\TextSwitcher\TextSwitcherTrack.cs" />
-    <Compile Include="Assets\Resources\Script\SelfDestruct.cs" />
-    <Compile Include="Assets\Resources\Script\TurnOnPhysics.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
