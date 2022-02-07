@@ -28,7 +28,7 @@ public class ScenesManager : MonoBehaviour
     }
 
 
-   // public MusicMode musicMode;
+   
     public enum MusicMode
     {
         noSound,
@@ -70,11 +70,12 @@ public class ScenesManager : MonoBehaviour
         {
             currentSceneNumber = SceneManager.GetActiveScene().buildIndex;
             GetScene();
+            LevelMusic();
 
 
         }
         GameTimer();
-        LevelMusic();
+        //LevelMusic();
     }
 
 
@@ -97,7 +98,7 @@ public class ScenesManager : MonoBehaviour
                     //AudioClip lvlMusic = Resources.Load<AudioClip>("Sounds/Abstraction - Three Red Hearts - Box Jump") as AudioClip;
                     //GetComponentInChildren<AudioSource>().clip = lvlMusic;
                     GetComponentInChildren<AudioSource>().Play();
-
+                    
                 }
 
                 if (gameTimer < endLevelTimer[currentSceneNumber-3])
@@ -119,7 +120,7 @@ public class ScenesManager : MonoBehaviour
                         {
                             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerTransition>().GameCompleted = true;
                         }
-                        StartCoroutine(MusicVolume(MusicMode.fadeDown));
+                        //StartCoroutine(MusicVolume(MusicMode.fadeDown));
                         SendInJSONFormat(SceneManager.GetActiveScene().name);
                         Invoke("NextLevel", 4);
                     }
@@ -196,7 +197,7 @@ public class ScenesManager : MonoBehaviour
 
     public void ResetScene()
     {
-        StartCoroutine(MusicVolume(MusicMode.noSound));
+        StartCoroutine(MusicVolume(MusicMode.fadeDown));
         gameTimer = 0;
         SceneManager.LoadScene(GameManager.currentScene);
         GameManager.Instance.GetComponent<ScoreManager>().ResetScore();
